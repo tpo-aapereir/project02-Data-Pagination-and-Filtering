@@ -12,6 +12,7 @@ For assistance:
 
 //limiting the students shown per page
 const itemsPerPage = 9;
+const studentList = document.querySelector('ul.student-list')
 
 //creates a paragraph element to display search errors once the search bar returns no results
 const body = document.querySelector('body');
@@ -24,8 +25,7 @@ This function will create and insert/append the elements needed to display a "pa
 utlilizing template literals to fetch data */
 function showPage(list, page) {
    const startIndex = (page * itemsPerPage) - itemsPerPage;
-   const endIndex = page * itemsPerPage;
-   const studentList = document.querySelector('ul.student-list');
+   const endIndex = page * itemsPerPage;  
    studentList.innerHTML = ``;
  // loop over the length of the `list` parameter
     // inside the loop create a conditional to display the proper students
