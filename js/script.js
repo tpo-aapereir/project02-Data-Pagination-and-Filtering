@@ -12,7 +12,7 @@ For assistance:
 
 //limiting the students shown per page
 const itemsPerPage = 9;
-const studentList = document.querySelector('ul.student-list')
+
 
 //creates a paragraph element to display search errors once the search bar returns no results
 const body = document.querySelector('body');
@@ -26,6 +26,7 @@ utlilizing template literals to fetch data */
 function showPage(list, page) {
    const startIndex = (page * itemsPerPage) - itemsPerPage;
    const endIndex = page * itemsPerPage;  
+   const studentList = document.querySelector('ul.student-list')
    studentList.innerHTML = ``;
  // loop over the length of the `list` parameter
     // inside the loop create a conditional to display the proper students
@@ -105,7 +106,7 @@ function performSearch(searchInput, studentInfo) {
       const lastName = studentInfo[i].name.last;
       const fullName = `${firstName.toLowerCase()} ${lastName.toLowerCase()}`;
    
-      if (searchInput.length !== 0 && fullName.includes(searchTerm)) {
+      if (searchInput.length !== 0 && fullName.includes(searchTerm)) { //always returns true if blank
          searchResults.push(studentInfo[i]);
       };
    };
@@ -123,20 +124,21 @@ function performSearch(searchInput, studentInfo) {
    };
 }
 
+
+
 // Call functions
 showPage(data, 1);
 addPagination(data);
 createSearchBar();
 
-
 //Set up eventListener for search bar
 const searchField = document.getElementById("search");
 const searchFieldButton = document.querySelector('button');
 
-searchField.addEventListener('keyup', ()=> {
-   performSearch(searchField.value,data);  
+searchFieldButton.addEventListener('click', ()=> {
+   performSearch(searchField.value,data);
 });
 
-searchBoxButton.addEventListener('click', ()=> {
-   performSearch(searchBox.value,data);
+searchField.addEventListener('keyup', ()=> {
+   performSearch(searchField.value,data);  
 });
