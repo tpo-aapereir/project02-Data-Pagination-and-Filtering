@@ -10,11 +10,12 @@ For assistance:
    Reach out in your Slack community: https://treehouse-fsjs-102.slack.com/app_redirect?channel=unit-2
 */
 
+//limiting the students shown per page
 const itemsPerPage = 9;
 
-//creates a paragraph element to display search errors later in the code
+//creates a paragraph element to display search errors once the search bar returns no results
 const body = document.querySelector('body');
-const p = document.createElement('p');
+let p = document.createElement('p');
 body.appendChild(p);
 
 /*
@@ -68,7 +69,7 @@ function addPagination (list) {
       document.querySelector('li button').className = 'active';
    }
 
-   //adding an event listener to wait for the click event to make active and show the page
+
 linkList.addEventListener('click', (e) => {
    if (e.target.tagName === 'BUTTON') {
       document.querySelector('.active').className = '';
@@ -96,7 +97,7 @@ Calling searchInput and searchInfo to populate data.
 */
 function performSearch(searchInput, studentInfo) {
    const searchTerm = searchInput.toLowerCase();
-   let searchResults = [];
+   const searchResults = [];
    p.textContent = '';
 
    for (let i=0;i<studentInfo.length; i++) {
@@ -118,7 +119,7 @@ function performSearch(searchInput, studentInfo) {
    };
 
    if (searchResults.length === 0) {
-      p.textContent = 'Unfortunately, no results match your criteria, please try again!';
+      p.textContent = 'No results found';
    };
 }
 
